@@ -1,0 +1,24 @@
+numero=int(input("Ingrese un numero de 4 digitos: "))
+
+
+if numero >= 1000 and numero <= 9999:
+
+  
+    a = numero // 1000
+    b = (numero // 100) % 10
+    c = (numero // 10) % 10
+    d = numero % 10
+
+    
+    if a > b: a, b = b, a
+    if a > c: a, c = c, a
+    if a > d: a, d = d, a
+    if b > c: b, c = c, b
+    if b > d: b, d = d, b
+    if c > d: c, d = d, c
+
+    print("Ascendente:", a, b, c, d)
+    print("Descendente:", d, c, b, a)
+
+else:
+    print("No es de 4 dígitos")

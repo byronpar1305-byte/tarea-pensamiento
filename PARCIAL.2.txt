@@ -1,0 +1,63 @@
+#ejercico 1
+
+tamaño=int(input("ingrese el tamño de la lista: "))
+base=int(input("ingrese el base de la lista: "))
+
+lista=[]
+
+for i in range(1,tamaño + 1):
+   lista.append(base * i)
+    
+print("lista de multiplo:", lista)
+
+#ejercicio 2
+
+tamaño=int(input("ingrese la catidad de nombre: "))
+
+nombre=[]
+longitud=[]
+
+for i in range(tamaño):
+    nombres =input("ingrese un nombre: ")
+    nombre.append(nombre)
+    longitud.append(len(nombre))
+    
+print("lista de nombres:", nombre)
+print("lista de logitud:", longitud)
+
+#ejercicio 3
+
+n = int(input("Ingrese la cantidad de clientes: "))
+
+evaluaciones = []
+
+for i in range(n):
+    nota = int(input(f"Cliente {i+1} (1-5): "))
+    evaluaciones.append(nota)
+
+conteo = [0, 0, 0, 0, 0]  
+
+for nota in evaluaciones:
+    conteo[nota - 1] += 1
+
+print("\nResultados:")
+print("Malo:", conteo[0])
+print("Regular:", conteo[1])
+print("Buena:", conteo[2])
+print("Muy Buena:", conteo[3])
+print("Excelente:", conteo[4])
+
+max_valor = max(conteo)
+mas_frecuente = conteo.index(max_valor) + 1
+print("Más frecuente:", mas_frecuente)
+
+promedio = sum(evaluaciones) / n
+print("Promedio:", round(promedio, 2))
+
+menores = 0
+for nota in evaluaciones:
+    if nota < promedio:
+        menores += 1
+
+porcentaje = (menores / n) * 100
+print("Porcentaje menor al promedio:", round(porcentaje, 2), "%")

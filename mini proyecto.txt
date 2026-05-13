@@ -1,0 +1,72 @@
+from tkinter import *
+
+ventana = Tk()
+ventana.title("Control de Salud")
+ventana.geometry("700x500")
+
+
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+
+niveles_azucar = [130, 160, 95, 175, 160]
+niveles_sal = [2000, 2400, 1800, 2400, 2700]
+
+presion_sistolica = [115, 130, 110, 125, 175]
+presion_diastolica = [75, 85, 70, 78, 95]
+
+texto = Text(ventana, width=80, height=30)
+texto.pack()
+
+suma_azucar = 0
+suma_sal = 0
+suma_sis = 0
+suma_dia = 0
+
+for i in range(len(dias)):
+    azucar = niveles_azucar[i]
+    sal = niveles_sal[i]
+    sistolica = presion_sistolica[i]
+    diastolica = presion_diastolica[i]
+
+    texto.insert(END, "======== " + dias[i] + " ========\n")
+    texto.insert(END, "Azúcar: " + str(azucar) + " mg/dL\n")
+    texto.insert(END, "Sal: " + str(sal) + " mg\n")
+    texto.insert(END, "Presión: " + str(sistolica) + "/" + str(diastolica) + " mmHg\n")
+
+    if azucar >= 70 and azucar <= 140:
+        texto.insert(END, "Azúcar normal\n")
+    else:
+        texto.insert(END, "ALERTA: Azúcar fuera del rango\n")
+
+    if sal <= 2300:
+        texto.insert(END, "Sal normal\n")
+    else:
+        texto.insert(END, "ALERTA: Exceso de sal\n")
+
+
+    if sistolica < 120 and diastolica < 80:
+        texto.insert(END, "Presión: Normal\n")
+    elif sistolica >= 120 and sistolica <= 129 and diastolica < 80:
+        texto.insert(END, "Presión: Elevada\n")
+    elif (sistolica >= 130 and sistolica <= 139) or (diastolica >= 80 and diastolica <= 89):
+        texto.insert(END, "Presión: Hipertensión Etapa 1\n")
+    else:
+        texto.insert(END, "Presión: Hipertensión Etapa 2\n")
+
+    texto.insert(END, "\n")
+
+    suma_azucar += azucar
+    suma_sal += sal
+    suma_sis += sistolica
+    suma_dia += diastolica
+
+promedio_azucar = suma_azucar / len(dias)
+promedio_sal = suma_sal / len(dias)
+promedio_sis = suma_sis / len(dias)
+promedio_dia = suma_dia / len(dias)
+
+texto.insert(END, "======== PROMEDIOS ========\n")
+texto.insert(END, "Promedio azúcar: " + str(promedio_azucar) + " mg/dL\n")
+texto.insert(END, "Promedio sal: " + str(promedio_sal) + " mg\n")
+texto.insert(END, "Promedio presión: " + str(promedio_sis) + "/" + str(promedio_dia) + " mmHg\n")
+
+ventana.mainloop()

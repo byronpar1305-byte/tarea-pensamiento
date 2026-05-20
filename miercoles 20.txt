@@ -1,0 +1,52 @@
+#tuplas
+personas = ("Ana", "Luis", "Carlos")
+
+print("Tupla original:")
+print(personas)
+
+lista = list(personas)
+lista.append("Marta")
+personas = tuple(lista)
+
+print("\nDespués de insertar:")
+print(personas)
+
+lista = list(personas)
+lista[1] = "Pedro"
+personas = tuple(lista)
+
+print("\nDespués de modificar:")
+print(personas)
+
+lista = list(personas)
+lista.remove("Carlos")
+personas = tuple(lista)
+
+print("\nDespués de eliminar:")
+print(personas)
+
+#diccionario
+
+alumno = {
+    "nombre": "Mario",
+    "edad": 18,
+    "carrera": "Ingeniería"
+}
+
+print("Diccionario original:")
+print(alumno)
+
+alumno["pais"] = "Guatemala"
+
+print("\nDespués de insertar:")
+print(alumno)
+
+alumno["edad"] = 20
+
+print("\nDespués de modificar:")
+print(alumno)
+
+del alumno["carrera"]
+
+print("\nDespués de eliminar:")
+print(alumno)
